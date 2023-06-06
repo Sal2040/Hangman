@@ -1,0 +1,5 @@
+{% if alive %}
+    Gratulace, vyhrál jsi!
+{% else %}
+    Tentokrát ti no nevyšlo...
+    To slovo mělo být "{{ word }}"

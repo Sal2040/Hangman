@@ -1,0 +1,7 @@
+{% if lives == 1 %}
+    Zbývá ti {{ lives }} život.
+{% elif lives > 1 and < 5}
+    Zbývají ti {{ lives }} životy.
+{% else %}
+    Zbývá ti {{ lives }} životů.
+{% endif %}
