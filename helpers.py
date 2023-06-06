@@ -1,5 +1,4 @@
 import random
-from collections import defaultdict
 from jinja2 import Environment, FileSystemLoader
 
 
@@ -103,11 +102,9 @@ class Game:
         self.__remaining_lives = self.__env.get_template('remaining_lives.txt')
         self.__outro = self.__env.get_template('outro.txt')
 
-
-
     def play(self):
 #        print("Vítej ve hře Šibenice. Pokud chceš pokračovat, stiskni ENTER...")
-        self.__introduction.render()
+        print(self.__introduction.render())
         input()
         # print(
         #     f"Hledané slovo má {self.__word.return_word_len()} {self.__decliner.pismeno[self.__word.return_word_len()]}.",
@@ -115,10 +112,11 @@ class Game:
         #     f" {self.__decliner.zivot[self.__player.return_lives()]}.",  # jak to zalomit?
         #     "Začínáme!",
         # )
-        context = {"world_len": self.__word.return_word_len(),
-                   "lives": self.__player.return_lives()}
-        self.__first_input.render(context)
-
+        context = {
+            "world_len": self.__word.return_word_len(),
+            "lives": self.__player.return_lives()
+        }
+        print(self.__first_input.render(context))
         print(self.__word.return_correctly_guessed_part())
 
         while self.__player.is_alive() and not self.__word.is_completed():
@@ -131,7 +129,7 @@ class Game:
             # )
             print(self.__word.return_correctly_guessed_part())
             context = {"lives": self.__player.return_lives()}
-            self.__remaining_lives.render(context)
+            print(self.__remaining_lives.render(context))
 
         # if self.__player.is_alive():
         #     print("Gratulace, vyhrál jsi! \n")
@@ -142,4 +140,4 @@ class Game:
             "alive": self.__player.is_alive(),
             "word": self.__word
         }
-        self.__outro.render((context))
+        print(self.__outro.render(context))

@@ -1,5 +1,6 @@
 {% if alive %}
-    Gratulace, vyhrál jsi!
+Gratulace, vyhrál jsi!
 {% else %}
-    Tentokrát ti no nevyšlo...
-    To slovo mělo být "{{ word }}"
+Tentokrát ti no nevyšlo...
+To slovo mělo být "{{ word }}"
+{% endif %}

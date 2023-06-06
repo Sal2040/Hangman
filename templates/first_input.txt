@@ -1,16 +1,16 @@
 {% if world_len == 1 %}
-    Hledané slovo má {{ world_len }} písmeno.
-{% elif world_len > 1 and < 5}
-    Hledané slovo má {{ world_len }} písmena.
+Hledané slovo má {{ world_len }} písmeno.
+{% elif world_len > 1 and world_len < 5 %}
+Hledané slovo má {{ world_len }} písmena.
 {% else %}
-    Hledané slovo má {{ world_len }} písmen.
+Hledané slovo má {{ world_len }} písmen.
 {% endif %}
 
 {% if lives == 1 %}
-    Zbývá ti {{ lives }}" život.
-{% elif lives > 1 and < 5}
-    Zbývají ti {{ lives }}" životy.
+Zbývá ti {{ lives }} život.
+{% elif lives > 1 and lives < 5 %}
+Zbývají ti {{ lives }} životy.
 {% else %}
-    Zbývá ti {{ lives }}" životů.
+Zbývá ti {{ lives }} životů.
 {% endif %}
-    Začínáme!
+Začínáme!
