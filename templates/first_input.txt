@@ -1,9 +1,9 @@
-{% if world_len == 1 %}
-Hledané slovo má {{ world_len }} písmeno.
-{% elif world_len > 1 and world_len < 5 %}
-Hledané slovo má {{ world_len }} písmena.
+{% if word_len == 1 %}
+Hledané slovo má {{ word_len }} písmeno.
+{% elif word_len > 1 and word_len < 5 %}
+Hledané slovo má {{ word_len }} písmena.
 {% else %}
-Hledané slovo má {{ world_len }} písmen.
+Hledané slovo má {{ word_len }} písmen.
 {% endif %}
 
 {% if lives == 1 %}

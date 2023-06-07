@@ -1,0 +1,7 @@
+{% if result == 0 %}
+Správně!
+{% elif result == 1 %}
+Tohle písmeno jsi již uhodl.
+{% else %}
+Špatně :(
+{% endif %}
