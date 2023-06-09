@@ -8,10 +8,8 @@ class WordList:
 
     @staticmethod
     def __read_text_file(file):
-        result = []
-        with open(file) as f:
-            for line in f:
-                result.append(line[:-1].lower())
+        with open(file, 'r') as f:
+            result = f.read().splitlines()
         return result
 
     def get_random_word(self):
