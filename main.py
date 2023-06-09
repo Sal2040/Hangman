@@ -23,6 +23,7 @@ def main():
     try:
         env = Environment(loader=FileSystemLoader(template_folder_path))
         yes = env.get_template("yes.txt")
+        no = env.get_template("no.txt")
         play_again = env.get_template("play_again.txt")
     except TemplateNotFound:
         try:
@@ -30,6 +31,7 @@ def main():
             template_folder_path = os.path.join(template_folder, language_l)
             env = Environment(loader=FileSystemLoader(template_folder_path))
             yes = env.get_template("yes.txt")
+            no = env.get_template("no.txt")
             play_again = env.get_template("play_again.txt")
         except TemplateNotFound:
             sys.exit(f"Language '{language}' not supported. Templates are missing")
@@ -52,7 +54,9 @@ def main():
         game = Game(word=word, player=player, template_folder=template_folder_path)
         game.play()
         repeat_game = input(play_again.render())
+        while repeat_game not in [yes.render(), no.render()]:
+            repeat_game = input(play_again.render())
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
