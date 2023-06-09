@@ -14,28 +14,42 @@ def main():
     language = args.language
     language_u = language.upper()
 
-    template_folder = os.path.join("templates", language_u)
+    template_folder = "templates"
+    template_folder_path = os.path.join(template_folder, language_u)
+    language_folder = "word_lists"
+    language_file = language_u + ".txt"
+    language_file_path = os.path.join(language_folder, language_file)
 
     try:
-        env = Environment(loader=FileSystemLoader(template_folder))
+        env = Environment(loader=FileSystemLoader(template_folder_path))
         yes = env.get_template("yes.txt")
         play_again = env.get_template("play_again.txt")
     except TemplateNotFound:
         try:
             language_l = language.lower()
-            template_folder = os.path.join("templates", language_l)
-            env = Environment(loader=FileSystemLoader(template_folder))
+            template_folder_path = os.path.join(template_folder, language_l)
+            env = Environment(loader=FileSystemLoader(template_folder_path))
             yes = env.get_template("yes.txt")
             play_again = env.get_template("play_again.txt")
-        except TemplateNotFound as e:
-            sys.exit(f"Language '{language}' not supported.")
+        except TemplateNotFound:
+            sys.exit(f"Language '{language}' not supported. Templates are missing")
 
-    wordlist = WordList(text_file="ceska_podstatna_jmena_test.txt")
+    try:
+        wordlist = WordList(text_file=language_file_path)
+    except FileNotFoundError:
+        try:
+            language_l = language.lower()
+            language_file = language_l + ".txt"
+            language_file_path = os.path.join(language_folder, language_file)
+            wordlist = WordList(text_file=language_file_path)
+        except FileNotFoundError:
+            sys.exit(f"Language '{language}' not supported. Corresponding list of words is missing.")
+
     repeat_game = yes.render()
     while repeat_game == yes.render():
         word = Word(wordlist.get_random_word())
         player = Player(lives=10)
-        game = Game(word=word, player=player, template_folder=template_folder)
+        game = Game(word=word, player=player, template_folder=template_folder_path)
         game.play()
         repeat_game = input(play_again.render())
 
