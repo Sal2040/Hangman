@@ -4,13 +4,16 @@ from jinja2.exceptions import TemplateNotFound
 from argparse import ArgumentParser
 import os
 import sys
+from ast import literal_eval
 
 
 def main():
     arg_parser = ArgumentParser()
-    arg_parser.add_argument("--language", default="CS", required=False)
+    arg_parser.add_argument("--lives", default=7, type=int, required=False)
+    arg_parser.add_argument("--language", default="CS", type=str, required=False)
 
     args = arg_parser.parse_args()
+    lives = args.lives
     language = args.language
     language_u = language.upper()
 
@@ -50,7 +53,7 @@ def main():
     repeat_game = yes.render()
     while repeat_game == yes.render():
         word = Word(wordlist.get_random_word())
-        player = Player(lives=10)
+        player = Player(lives=lives)
         game = Game(word=word, player=player, template_folder=template_folder_path)
         game.play()
         repeat_game = input(play_again.render())
