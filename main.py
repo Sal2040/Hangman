@@ -4,7 +4,6 @@ from jinja2.exceptions import TemplateNotFound
 from argparse import ArgumentParser
 import os
 import sys
-from ast import literal_eval
 
 
 def main():

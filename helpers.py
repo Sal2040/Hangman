@@ -1,5 +1,6 @@
 import random
 from jinja2 import Environment, FileSystemLoader
+from enum import Enum
 
 
 class WordList:
@@ -52,10 +53,7 @@ class Word:
             return 2
 
     def is_completed(self):
-        if len(set(self.__word)) == len(self.__correctly_guessed_letters):
-            return True
-        else:
-            return False
+        return len(set(self.__word)) == len(self.__correctly_guessed_letters)
 
 
 class Player:
@@ -69,10 +67,7 @@ class Player:
         self.__lives -= 1
 
     def is_alive(self):
-        if self.__lives > 0:
-            return True
-        else:
-            return False
+        return self.__lives > 0
 
 
 class Game:
