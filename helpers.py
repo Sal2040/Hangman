@@ -109,8 +109,9 @@ class Game:
 
 
 class GameSession:
-    def __init__(self, language_folder, language):
+    def __init__(self, language_folder, language, lives):
         self.__wordlist, self.__templates = GameSession.fetch_language(language_folder, language)
+        self.__lives = lives
 
     @staticmethod
     def fetch_templates(template_folder_path):
@@ -158,14 +159,14 @@ class GameSession:
 
         return wordlist, templates
 
-    def game_loop(self, lives):
+    def game_loop(self):
         yes = self.__templates["yes"].render()
         no = self.__templates["no"].render()
         play_again = self.__templates["play_again"].render()
         repeat_game = yes
         while repeat_game == yes:
             word = Word(self.__wordlist.get_random_word())
-            player = Player(lives=lives)
+            player = Player(lives=self.__lives)
             game = Game(word=word, player=player, templates=self.__templates)
             game.play()
             repeat_game = input(play_again)

@@ -12,8 +12,8 @@ def main():
     language = args.language
     language_folder = "languages"
 
-    session = GameSession(language_folder, language)
-    session.game_loop(lives)
+    session = GameSession(language_folder, language, lives)
+    session.game_loop()
 
 
 if __name__ == "__main__":
