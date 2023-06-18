@@ -1,11 +1,11 @@
 # Hangman
 
-This is a simple implementation of the popular Hangman game in Python. It uses a command line interface with text prompts and messages only. No actual drawing of the hangman figure is included.
+This is a simple implementation of the popular Hangman game in Python. It uses a CLI with text prompts and messages only. No actual drawing of the hangman figure is included.
 The game supports multiple languages via `jinja2` templating.
 
 ## Project composition:
 * **helpers.py** - module with functional classes
-* **main.py** - main script ro run the game
+* **main.py** - main script to run the game
 * **languages** - folder containing templates and wordlists
 
 
