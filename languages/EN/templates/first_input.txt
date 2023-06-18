@@ -1,0 +1,12 @@
+{% if word_len == 1 %}
+The word has {{ word_len }} letter.
+{% else %}
+The word has {{ word_len }} letters.
+{% endif %}
+
+{% if lives == 1 %}
+You have {{ lives }} life left.
+{% else %}
+You have {{ lives }} lives left.
+{% endif %}
+Let's begin!

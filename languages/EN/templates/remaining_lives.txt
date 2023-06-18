@@ -1,0 +1,5 @@
+{% if lives == 1 %}
+You have {{ lives }} life left.
+{% else %}
+You have {{ lives }} lives left.
+{% endif %}

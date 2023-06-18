@@ -21,7 +21,7 @@ class WordList:
 
 class Word:
     def __init__(self, word: str):
-        self.__word = word
+        self.__word = word.lower()
         self.__correctly_guessed_letters = set()
 
     def __str__(self):

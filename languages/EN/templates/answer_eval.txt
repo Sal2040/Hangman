@@ -1,0 +1,7 @@
+{% if result == 0 %}
+Correct!
+{% elif result == 1 %}
+You have guessed this letter right.
+{% else %}
+Wrong :(
+{% endif %}

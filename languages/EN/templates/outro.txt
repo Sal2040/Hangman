@@ -1,0 +1,6 @@
+{% if alive %}
+Congratulations! You won.
+{% else %}
+You lost this one...
+The searched word was "{{ word }}"
+{% endif %}
